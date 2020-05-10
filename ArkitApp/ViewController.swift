@@ -8,6 +8,7 @@
 
 import UIKit
 import RealityKit
+import ARKit
 
 class ViewController: UIViewController {
     
@@ -16,24 +17,55 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //arViewSetup()
         // Load the "Box" scene from the "Experience" Reality File
-        let boxAnchor = try! Experience.loadBox()
+        //let boxAnchor = try! Experience.loadBox()
         
         // Add the box anchor to the scene
         //arView.scene.anchors.append(boxAnchor)
-
-
         
-        let model = try? ModelEntity.load(named: "fighter")
-        model?.generateCollisionShapes(recursive: true)
-        model?.position = [0,0,0]
-        model?.scale = [1,1,1]
+        let floor = ModelEntity(mesh: MeshResource.generateBox(size: [1,0.01,1]))
+        floor.physicsBody = PhysicsBodyComponent(massProperties: PhysicsMassProperties(mass: 0.1), material: .default, mode: .kinematic)
+        floor.generateCollisionShapes(recursive: true)
+        floor.collision = CollisionComponent(shapes: [ShapeResource.generateBox(size: [1,1,1])])
         
+        
+        var configure = ARWorldTrackingConfiguration()
+        configure.planeDetection = .horizontal
+        arView.session.run(configure, options: .resetTracking)
+        
+        
+        let model:ModelEntity = try! ModelEntity.loadModel(named: "fighter")
+        model.generateCollisionShapes(recursive: true)
+        model.position = [0,0.1,0]
+        print("available animations \(model.availableAnimations) asdf")
+        
+        model.playAnimation(model.availableAnimations[0], transitionDuration: 1, startsPaused: false)
+        
+        
+        model.scale = [0.2,0.2,0.2]
+        model.physicsBody = PhysicsBodyComponent(massProperties: PhysicsMassProperties(mass: 0), material: .default, mode: .kinematic)
+        model.physicsMotion = PhysicsMotionComponent(linearVelocity: [0,0,0], angularVelocity: [0,0,0])
+        
+        print(model.availableAnimations)
+        
+        //model.availableAnimations
+        
+        if #available(iOS 13.4, *) {
+            arView.environment.sceneUnderstanding.options.insert(.physics)
+        } else {
+            // Fallback on earlier versions
+        }
+        if #available(iOS 13.4, *) {
+            arView.environment.sceneUnderstanding.options.insert(.occlusion)
+        } else {
+            // Fallback on earlier versions
+        }
         
         let anchorEntity = AnchorEntity(plane: .horizontal, minimumBounds: [0.2,0.2])
         arView.scene.addAnchor(anchorEntity)
-        anchorEntity.addChild(model!, preservingWorldTransform: true)
+        anchorEntity.addChild(model, preservingWorldTransform: true)
+        anchorEntity.addChild(floor)
         
         animateButtonSetup()
     }
@@ -54,5 +86,9 @@ class ViewController: UIViewController {
     @objc func animateButtonTapped(){
         print("xxx")
 
+    }
+    
+    func arViewSetup(){
+        arView = ARView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height), cameraMode: .ar, automaticallyConfigureSession: true)
     }
 }

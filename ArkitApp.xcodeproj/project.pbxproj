@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6ED1FD4C246709E50050580B /* fighter.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6ED1FD4B246709E50050580B /* fighter.usdz */; };
+		6ED8843924675322004B7013 /* fighter.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 6ED8843824675321004B7013 /* fighter.usdz */; };
 		6EEEEE8F2466139A00F864BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEEEE8E2466139A00F864BC /* AppDelegate.swift */; };
 		6EEEEE912466139A00F864BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEEEE902466139A00F864BC /* ViewController.swift */; };
 		6EEEEE932466139B00F864BC /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 6EEEEE922466139B00F864BC /* Experience.rcproject */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6ED1FD4B246709E50050580B /* fighter.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = fighter.usdz; path = ../../../../Desktop/fighter.usdz; sourceTree = "<group>"; };
+		6ED8843824675321004B7013 /* fighter.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fighter.usdz; sourceTree = SOURCE_ROOT; };
 		6EEEEE8B2466139A00F864BC /* ArkitApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ArkitApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EEEEE8E2466139A00F864BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EEEEE902466139A00F864BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 				6EEEEE8E2466139A00F864BC /* AppDelegate.swift */,
 				6EEEEE902466139A00F864BC /* ViewController.swift */,
 				6EEEEE922466139B00F864BC /* Experience.rcproject */,
-				6ED1FD4B246709E50050580B /* fighter.usdz */,
+				6ED8843824675321004B7013 /* fighter.usdz */,
 				6EEEEE942466139B00F864BC /* Main.storyboard */,
 				6EEEEE972466139F00F864BC /* Assets.xcassets */,
 				6EEEEE992466139F00F864BC /* LaunchScreen.storyboard */,
@@ -236,7 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EEEEE9B2466139F00F864BC /* LaunchScreen.storyboard in Resources */,
-				6ED1FD4C246709E50050580B /* fighter.usdz in Resources */,
+				6ED8843924675322004B7013 /* fighter.usdz in Resources */,
 				6EEEEE982466139F00F864BC /* Assets.xcassets in Resources */,
 				6EEEEE962466139B00F864BC /* Main.storyboard in Resources */,
 			);
